@@ -1,4 +1,4 @@
-NAME = borrame
+NAME = test.out
 
 SRCS = test.c \
 	project/ft_isalpha.c \
