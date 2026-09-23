@@ -23,8 +23,6 @@ SRCS = \
 	ft_strnstr.c \
 	ft_atoi.c
 
-INCLUDES = includes
-
 OBJ = $(SRCS:.c=.o)
 
 CC = cc
@@ -40,7 +38,7 @@ $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
