@@ -36,15 +36,34 @@ int	main(void)
 	printf("hola ->  %i\n", strlen("hola") == ft_strlen("hola"));
 	printf(" ->  %i\n", strlen("") == ft_strlen(""));
 
+	printf("\nmemset\n-------\n");
+	printf("my version\n");
+	char s[5] = "Hola";
+	printf("memset %s\n", s);
+	ft_memset(s, 'X', 3);
+	printf("memset %s\n", s);
+	ft_memset(s, 'x', 2);
+	printf("memset %s\n", s);
 
+	printf("lib version\n");
+	char r[5] = "Hola";
+    printf("memset %s\n", r);
+    memset(r, 'X', 3);
+    printf("memset %s\n", r);
+    memset(r, 'x', 2);
+    printf("memset %s\n", r);
 
-/*
-	char	*s = "hola";
-	printf("memset %p\n", ft_memset(s, 'X', 3));
-	printf("memset %p\n", ft_memset(s, 'x', 2));
+	printf("\nbzero\n-------\n");
+	printf("my version\n");
+	ft_bzero(s, 3);
+	printf("bzero %s\n", s);
 
-	char	*s = "hola";
-	printf("bzero %p\n", ft_bzero(s, 3));
+	printf("lib version\n");
+	bzero(r, 3);
+    printf("bzero %s\n", r);
+
+	
+/*	
 
 	char	*src = "Jose Antonio";
 	char	dst[12];
