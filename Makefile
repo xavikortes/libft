@@ -9,9 +9,9 @@ SRCS = test.c \
 	project/ft_strlen.c \
 	project/ft_memset.c \
 	project/ft_bzero.c \
-#	project/ft_memcpy.c \
+	project/ft_memcpy.c \
 	project/ft_memmove.c \
-	project/ft_strlcpy.c \
+#	project/ft_strlcpy.c \
 	project/ft_strlcat.c \
 	project/ft_toupper.c \
 	project/ft_tolower.c \

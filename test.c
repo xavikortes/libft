@@ -62,19 +62,38 @@ int	main(void)
 	bzero(r, 3);
     printf("bzero %s\n", r);
 
+	printf("\nmemcpy\n-------\n");
+	printf("my version\n");
+	char t[5] = "Hola";
+	char u[5] = "Adios";
+	printf("memcpy %s\n", t);
+	ft_memcpy(t, u, 3);
+	printf("memcpy %s\n", t);
+
+	printf("lib version\n");
+	char v[5] = "Hola";
+	char w[5] = "Adios";
+    printf("memcpy %s\n", v);
+    memcpy(v, w, 3);
+    printf("memcpy %s\n", v);
+
+	printf("\nmemmove\n-------\n");
+	printf("my version\n");
+	char x[5] = "Hola";
+	char y[5] = "Adios";
+	printf("memmove %s\n", x);
+	ft_memmove(x, y, 3);
+	printf("memmove %s\n", x);
+
+	printf("lib version\n");
+	char z[5] = "Hola";
+	char a[5] = "Adios";
+    printf("memmove %s\n", z);
+    memmove(z, a, 3);
+    printf("memmove %s\n", z);
+
 	
 /*	
-
-	char	*src = "Jose Antonio";
-	char	dst[12];
-
-	printf("memcpy %zu \n", ft_memcpy(dst, src, 4));
-	
-	char	*src = "Jose Antonio";
-	char	dst[12];
-
-	printf("memmove %zu \n", ft_memmove(dst, src, 4));
-
 	char	*src = "Jose Antonio";
 	char	dst[12];
 
