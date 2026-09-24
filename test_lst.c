@@ -32,7 +32,7 @@ int	main(void)
 	t_list	*lst2;
 	t_list	*lst3;
 
-	printf("new (NULL) -> ");
+	printf("\nnew (NULL) -> ");
 	lst = ft_lstnew(NULL);
 	lst_show(lst);
 
