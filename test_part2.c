@@ -13,4 +13,13 @@ int	main(void)
     printf("strjoin Hola amigos -> %s\n", ft_strjoin("Hola", " amigos"));
     printf("strjoin (NULL) amigos -> %s\n", ft_strjoin(NULL, " amigos"));
     printf("strjoin Hola (NULL) -> %s\n", ft_strjoin("Hola", NULL));
+
+	printf("\nstrtrim\n-------\n");
+    printf("strtrim '      Hola amigos' ' ' -> '%s'\n", ft_strtrim("      Hola amigos", " "));
+    printf("strtrim 'Hola amigos      ' ' ' -> '%s'\n", ft_strtrim("Hola amigos      ", " "));
+    printf("strtrim '   Hola amigos   ' ' ' -> '%s'\n", ft_strtrim("   Hola amigos   ", " "));
+    printf("strtrim (NULL) ' ' -> '%s'\n", ft_strtrim(NULL, " "));
+    printf("strtrim 'Hola amigos' (NULL) -> '%s'\n", ft_strtrim("hola amigos", NULL));
+    printf("strtrim ' hola amigos ' ' hs' -> '%s'\n", ft_strtrim("hola amigos", " hs"));
+	
 }
