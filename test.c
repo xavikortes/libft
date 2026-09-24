@@ -195,4 +195,24 @@ int	main(void)
 	printf("%s %i\n", m, ft_atoi(m) == atoi(m));
 	printf("%s %i\n", n, ft_atoi(n) == atoi(n));
 	printf("%s %i\n", o, ft_atoi(o) == atoi(o));
+
+	printf("\ncalloc\n-------\n");
+	printf("my version\n");
+	printf("%p\n", ft_calloc(5, 2));
+	printf("%p\n", ft_calloc(INT_MAX, 2));
+
+	printf("lib version\n");
+	printf("%p\n", calloc(5, 2));
+	printf("%p\n", calloc(INT_MAX, 2));
+
+	printf("\nstrdup\n-------\n");
+	printf("my version\n");
+	printf("%s\n", ft_strdup("hola amigos"));
+	printf("%s\n", ft_strdup(""));
+
+	printf("lib version\n");
+	printf("%s\n", strdup("hola amigos"));
+	printf("%s\n", strdup(""));
+
+	
 }
