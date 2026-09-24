@@ -92,64 +92,107 @@ int	main(void)
     memmove(z, a, 3);
     printf("memmove %s\n", z);
 
+	printf("\nstrlcpy\n-------\n");
+	printf("my version\n");
+    char b[15] = "Hola amigos";
+    char c[15];
+    printf("strlcpy %s\n", b);
+    ft_strlcpy(c, b, 7);
+    printf("strlcpy %s\n", c);
+
+    printf("lib version\n");
+    char d[15] = "Hola amigos";
+    char e[15];
+    printf("strlcpy %s\n", d);
+    strlcpy(e, d, 7);
+    printf("strlcpy %s\n", e);
+
+	printf("\nstrlcat\n-------\n");
+	printf("my version\n");
+    char f[15] = "Hola";
+    char g[15] = " amigos";
+    printf("strlcat %s\n", f);
+    ft_strlcat(f, g, 10);
+    printf("strlcat %s\n", f);
+
+    printf("lib version\n");
+    char h[15] = "Hola";
+    char i[15] = " amigos";
+    printf("strlcat %s\n", h);
+    strlcat(h, i, 10);
+    printf("strlcat %s\n", h);
+
+	printf("\ntoupper\n-------\n");
+	printf("a -> %i\n", ft_toupper('a') == toupper('a'));
+	printf("A -> %i\n", ft_toupper('A') == toupper('A'));
+	printf("  -> %i\n", ft_toupper(' ') == toupper(' '));
+
+	printf("\ntolower\n-------\n");
+	printf("a -> %i\n", ft_tolower('a') == tolower('a'));
+	printf("A -> %i\n", ft_tolower('A') == tolower('A'));
+	printf("  -> %i\n", ft_tolower(' ') == tolower(' '));
 	
-/*	
-	char	*src = "Jose Antonio";
-	char	dst[12];
+	printf("\nstrchr\n-------\n");
+	char *j = "hola";
+	printf("hola o -> %i\n", ft_strchr(j, 'o') == strchr(j, 'o'));
+	printf("hola a -> %i\n", ft_strchr(j, 'a') == strchr(j, 'a'));
+	printf("hola w -> %i\n", ft_strchr(j, 'w') == strchr(j, 'w'));
 
-	printf("strlcpy %zu \n", ft_strlcpy(dst, src, 4));
-
-	char	dst[50] = "Hola ";
-	char	dst2[50] = "Adios ";
-	printf("strlcat %zu\n", ft_strlcat(dst, "amigos", 3));
-	printf("strlcat %zu\n", ft_strlcat(dst2, "enemigos", 3));
-
-	printf("toupper a %i\n", ft_toupper('a'));
-	printf("toupper A %i\n", ft_toupper('A'));
-	printf("toupper   %i\n", ft_toupper(' '));
+	printf("\nstrrchr\n-------\n");
+	char *k = "libelula";
+	printf("libelula l -> %i\n", ft_strrchr(k, 'l') == strrchr(k, 'l'));
+	printf("libelula e -> %i\n", ft_strrchr(k, 'e') == strrchr(k, 'e'));
+	printf("libelula w -> %i\n", ft_strrchr(k, 'w') == strrchr(k, 'w'));
 	
-	printf("tolower a %i\n", ft_tolower('a'));
-	printf("tolower A %i\n", ft_tolower('A'));
-	printf("tolower   %i\n", ft_tolower(' '));
-
-	char *h = "hola";
-	char *a = "adios";
-
-	printf("strchr hola h %s\n", ft_strchr(h, 'h'));
-	printf("strchr hola o %s\n", ft_strchr(h, 'o'));
-	printf("strchr hola l %s\n", ft_strchr(h, 'l'));
-	printf("strchr hola a %s\n", ft_strchr(h, 'a'));
-	printf("strchr hola z %s\n", ft_strchr(h, 'z'));
-	printf("strchr adios h %s\n", ft_strchr(a, 'h'));
-
-	char *h = "hola";
-	char *a = "adios";
-	char *l = "libelula";
-
-	printf("strchr hola h %s\n", ft_strrchr(h, 'h'));
-	printf("strchr hola o %s\n", ft_strrchr(h, 'o'));
-	printf("strchr hola l %s\n", ft_strrchr(h, 'l'));
-	printf("strchr hola a %s\n", ft_strrchr(h, 'a'));
-	printf("strchr hola z %s\n", ft_strrchr(h, 'z'));
-	printf("strchr libelula l %s\n", ft_strrchr(l, 'l'));
-	printf("strchr adios h %s\n", ft_strrchr(a, 'h'));
+	printf("\nstrncmp\n-------\n");
+	printf("ABC AB 3 -> %i\n", ft_strncmp("ABC", "AB", 3) == strncmp("ABC", "AB", 3));
+	printf("ABC AB 2 -> %i\n", ft_strncmp("ABC", "AB", 2) == strncmp("ABC", "AB", 2));
+	printf("AB ABC 3 -> %i\n", ft_strncmp("AB", "ABC", 3) == strncmp("AB", "ABC", 3));
+	printf("AB AB 3 -> %i\n", ft_strncmp("AB", "AB", 3) == strncmp("AB", "AB", 3));
 	
-	printf("%i\n", ft_strncmp("ABC", "AB", 3));
-	printf("%i\n", ft_strncmp("ABC", "AB", 2));
+	printf("\nmemchr\n-------\n");
+	printf("my version\n");
+	printf("hola-amigos g 3 -> %s\n", (char *) ft_memchr("hola-amigos", 'g', 3));
+	printf("hola-amigos g 9 -> %s\n", (char *) ft_memchr("hola-amigos", 'g', 9));
+	printf("hola-amigos g 6 -> %s\n", (char *) ft_memchr("hola-amigos", 'g', 6));
+	printf("- g 0 -> %s\n", (char *) ft_memchr("", 'g', 0));
+	printf("hola-amigos x 6 -> %s\n", (char *) ft_memchr("hola-amigos", 'x', 6));
 
-	char	s1[] = "099990Hola";
-	char	s2[] = "";
-	char	s3[] = "                \n\t\v\r-46564";
-	char	s4[] = "-+-+-+-+-+-+------+++++---123abc";
+	printf("lib version\n");
+	printf("hola-amigos g 3 -> %s\n", (char *) memchr("hola-amigos", 'g', 3));
+	printf("hola-amigos g 9 -> %s\n", (char *) memchr("hola-amigos", 'g', 9));
+	printf("hola-amigos g 6 -> %s\n", (char *) memchr("hola-amigos", 'g', 6));
+	printf("- g 0 -> %s\n", (char *) memchr("", 'g', 0));
+	printf("hola-amigos x 6 -> %s\n", (char *) memchr("hola-amigos", 'x', 6));
 
-	printf("%s %i\n", s1, ft_atoi(s1));
-	printf("%s %i\n", s2, ft_atoi(s2));
-	printf("%s %i\n", s3, ft_atoi(s3));
-    printf("%s %i\n", s4, ft_atoi(s4));
+	printf("\nmemcmp\n-------\n");
+	printf("ABC AB 3 -> %i\n", ft_memcmp("ABC", "AB", 3) == memcmp("ABC", "AB", 3));
+	printf("ABC AB 2 -> %i\n", ft_memcmp("ABC", "AB", 2) == memcmp("ABC", "AB", 2));
+	printf("AB ABC 3 -> %i\n", ft_memcmp("AB", "ABC", 3) == memcmp("AB", "ABC", 3));
+	printf("AB AB 3 -> %i\n", ft_memcmp("AB", "AB", 3) == memcmp("AB", "AB", 3));
+	
+	printf("\nstrnstr\n-------\n");
+	printf("my version\n");
+	printf("hola-amigos ami 3 -> %s\n", ft_strnstr("hola-amigos", "ami", 3));
+	printf("hola-amigos ami 9 -> %s\n", ft_strnstr("hola-amigos", "ami", 9));
+	printf("hola-amigos ami 6 -> %s\n", ft_strnstr("hola-amigos", "ami", 6));
+	printf("- ami 3 -> %s\n", ft_strnstr("", "ami", 3));
+	printf("hola-amigos - 6 -> %s\n", ft_strnstr("hola-amigos", "", 6));
 
-	printf("%s\n", ft_strnstr("Hola amigos", "ami", 3));
-	printf("%s\n", ft_strnstr("Hola amigos", "ami", 8));
-	printf("%s\n", ft_strnstr("Hola amigos", "jose", 10));
-	printf("%s\n", ft_strnstr("Hola amigos", "", 3));
-*/
+	printf("lib version\n");
+	printf("hola-amigos ami 3 -> %s\n", strnstr("hola-amigos", "ami", 3));
+	printf("hola-amigos ami 9 -> %s\n", strnstr("hola-amigos", "ami", 9));
+	printf("hola-amigos ami 6 -> %s\n", strnstr("hola-amigos", "ami", 6));
+	printf("- ami 3 -> %s\n", strnstr("", "ami", 3));
+	printf("hola-amigos - 6 -> %s\n", strnstr("hola-amigos", "", 6));
+
+	printf("\natoi\n-------\n");
+	char l[] = "099990Hola";
+	char m[] = "";
+	char n[] = "                \n\t\v\r-46564";
+	char o[] = "-+-+-+-+-+-+------+++++---123abc";
+	printf("%s %i\n", l, ft_atoi(l) == atoi(l));
+	printf("%s %i\n", m, ft_atoi(m) == atoi(m));
+	printf("%s %i\n", n, ft_atoi(n) == atoi(n));
+	printf("%s %i\n", o, ft_atoi(o) == atoi(o));
 }

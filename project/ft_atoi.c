@@ -32,7 +32,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	while (is_space(str[i]))
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign *= -1;

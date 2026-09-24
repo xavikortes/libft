@@ -1,30 +1,13 @@
 NAME = test.out
 
-SRCS = test.c \
-	project/ft_isalpha.c \
-	project/ft_isdigit.c \
-	project/ft_isalnum.c \
-	project/ft_isascii.c \
-	project/ft_isprint.c \
-	project/ft_strlen.c \
-	project/ft_memset.c \
-	project/ft_bzero.c \
-	project/ft_memcpy.c \
-	project/ft_memmove.c \
-#	project/ft_strlcpy.c \
-	project/ft_strlcat.c \
-	project/ft_toupper.c \
-	project/ft_tolower.c \
-	project/ft_strchr.c \
-	project/ft_strrchr.c \
-	project/ft_strncmp.c \
-	project/ft_memchr.c \
-	project/ft_memcmp.c \
-	project/ft_strnstr.c \
-	project/ft_atoi.c
+SRC_DIR = project
+
+SRCS = $(SRC_DIR)/ft_*.c
+
+OBJS = test.c $(SRCS)
 	
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -Wno-error=format-overflow
 
 RM = rm -f
 
@@ -33,8 +16,8 @@ all: $(NAME)
 test: all 
 	./$(NAME)	
 
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -lbsd
 
 clean:
 
