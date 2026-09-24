@@ -1,28 +1,36 @@
-NAME = test.out
-
 SRC_DIR = project
 
 SRCS = $(SRC_DIR)/ft_*.c
-
-OBJS = test.c $(SRCS)
 	
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -Wno-error=format-overflow
 
 RM = rm -f
 
-all: $(NAME)
+all: p1 p2 lst
 
-test: all 
-	./$(NAME)	
+p1: p1.out
+	./p1.out
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -lbsd
+p2: p2.out
+	./p2.out
+
+lst: lst.out
+	./lst.out	
+
+p1.out: $(SRCS)
+	$(CC) $(CFLAGS) -o p1.out test_part1.c $(SRCS) -lbsd
+
+p2.out: $(SRCS)
+	$(CC) $(CFLAGS) -o p2.out test_part2.c $(SRCS) -lbsd
+
+lst.out: $(SRCS)
+	$(CC) $(CFLAGS) -o lst.out test_lst.c $(SRCS) -lbsd
 
 clean:
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) p1.out p2.out lst.out
 
 re: fclean all
 

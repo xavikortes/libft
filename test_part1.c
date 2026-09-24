@@ -212,7 +212,5 @@ int	main(void)
 
 	printf("lib version\n");
 	printf("%s\n", strdup("hola amigos"));
-	printf("%s\n", strdup(""));
-
-	
+	printf("%s\n", strdup(""));	
 }
