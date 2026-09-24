@@ -1,3 +1,4 @@
-test.out
-project/libft.a
-project/*.o
+*.out
+*.swp
+*.a
+*.o
