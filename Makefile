@@ -18,13 +18,13 @@ p2: p2.out
 lst: lst.out
 	./lst.out	
 
-p1.out: $(SRCS)
+p1.out: $(SRCS) test_part1.c
 	$(CC) $(CFLAGS) -o p1.out test_part1.c $(SRCS) -lbsd
 
-p2.out: $(SRCS)
+p2.out: $(SRCS) test_part2.c
 	$(CC) $(CFLAGS) -o p2.out test_part2.c $(SRCS) -lbsd
 
-lst.out: $(SRCS)
+lst.out: $(SRCS) test_lst.c
 	$(CC) $(CFLAGS) -o lst.out test_lst.c $(SRCS) -lbsd
 
 clean:
