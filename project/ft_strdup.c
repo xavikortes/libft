@@ -6,9 +6,9 @@ char	*ft_strdup(const char *str)
 	size_t	len;
 
 	len = ft_strlen(str);
-	ptr = ft_calloc(len, sizeof(char));
+	ptr = ft_calloc(len + 1, sizeof(char));
 	if (ptr == NULL)
 		return (ptr);
-	ft_memcpy(ptr, str, len);
+	ft_strlcpy(ptr, str, len + 1);
 	return (ptr);
 }
