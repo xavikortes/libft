@@ -21,5 +21,25 @@ int	main(void)
     printf("strtrim (NULL) ' ' -> '%s'\n", ft_strtrim(NULL, " "));
     printf("strtrim 'Hola amigos' (NULL) -> '%s'\n", ft_strtrim("hola amigos", NULL));
     printf("strtrim ' hola amigos ' ' hs' -> '%s'\n", ft_strtrim("hola amigos", " hs"));
+
+	printf("\nputchar_fd\n-------\n");
+    printf("putchar_fd 'h' 1\n");	
+    printf("putchar_fd 'o' 1\n");	
+    printf("putchar_fd 'l' 1\n");	
+    printf("putchar_fd 'a' 1\n");	
+    printf("putchar_fd '\\n' 1\n");
+	ft_putchar_fd('h', 1);
+	ft_putchar_fd('o', 1);
+	ft_putchar_fd('l', 1);
+	ft_putchar_fd('a', 1);
+	ft_putchar_fd('\n', 1);
+
+	printf("\nputstr_fd\n-------\n");
+    printf("putstr_fd Hola\\n 1\n");
+	ft_putstr_fd("Hola\n", 1);
 	
+    printf("\nputendl_fd\n-------\n");
+    printf("putendl_fd Hola 1\n");
+    ft_putendl_fd("Hola", 1);
+
 }
