@@ -6,7 +6,7 @@
 /*   By: jcortes <jcortes@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 12:23:10 by jcortes           #+#    #+#             */
-/*   Updated: 2026/09/25 13:06:22 by jcortes          ###   ########.fr       */
+/*   Updated: 2026/09/25 18:48:01 by jcortes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,37 @@ static int	calculate_len(char *s, char c)
 {
 	char	*ptr;
 
+	if (*s == '\0')
+		return (0);
 	ptr = ft_strchr(s, c);
 	if (ptr == NULL)
 		return (1);
+	if (ptr == s)
+		return (calculate_len(++ptr, c));
 	return (1 + calculate_len(++ptr, c));
 }
 
-static char	*set_str_item(char **dst, char *s, char c)
+static char	**set_items(char **arr, int i, char *s, char c)
 {
 	int		size;
 	char	*ptr;
 
+	if (*s == '\0')
+		return (arr);
 	ptr = ft_strchr(s, c);
 	if (ptr == NULL)
 		size = ft_strlen(s);
 	else
 		size = ptr - s;
-	*dst = ft_calloc(size + 1, sizeof(char));
-	if (dst == NULL)
-		return (NULL);
-	ft_strlcpy(*dst, s, size + 1);
-	return (++ptr);
+	if (size == 0)
+		return (set_items(arr, i, ++ptr, c));
+	arr[i] = ft_calloc(size + 1, sizeof(char));
+	if (arr[i] == NULL)
+		return (arr);
+	ft_strlcpy(arr[i], s, size + 1);
+	if (ptr == NULL)
+		return (arr);
+	return (set_items(arr, i + 1, ++ptr, c));
 }
 
 static char	**free_arr(char **arr, int len)
@@ -65,12 +75,14 @@ char	**ft_split(char const *s, char c)
 	arr = ft_calloc(len + 1, sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
+	arr = set_items(arr, 0, ptr, c);
 	while (i < len)
 	{
-		ptr = set_str_item(&arr[i], ptr, c);
-		if (arr[i] == NULL)
-			return (free_arr(arr, len));
-		i++;
+		if (arr[i++] == NULL)
+		{
+			free_arr(arr, len);
+			return (NULL);
+		}
 	}
 	arr[len] = NULL;
 	return (arr);
