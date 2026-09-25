@@ -6,7 +6,7 @@
 /*   By: jcortes <jcortes@student.42madrid.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 13:12:54 by jcortes           #+#    #+#             */
-/*   Updated: 2026/09/23 13:25:28 by jcortes          ###   ########.fr       */
+/*   Updated: 2026/09/25 10:41:18 by jcortes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,12 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	size_t	i;
-	char	tmp[ft_strlen(src)];
-
-	i = 0;
-	while (i < n)
+	if (dst <= src || src + n < dst)
+		return (ft_memcpy(dst, src, n));
+	while (n > 0)
 	{
-		((char *) tmp)[i] = ((char *) src)[i];
-		i++;
-	}
-	i = 0;
-	while (i < n)
-	{
-		((char *) dst)[i] = ((char *) tmp)[i];
-		i++;
+		ft_memset(dst + n - 1, ((char *) src)[n - 1], 1);
+		n--;
 	}
 	return (dst);
 }
