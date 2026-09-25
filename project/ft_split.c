@@ -6,7 +6,7 @@
 /*   By: jcortes <jcortes@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 12:23:10 by jcortes           #+#    #+#             */
-/*   Updated: 2026/09/25 18:48:01 by jcortes          ###   ########.fr       */
+/*   Updated: 2026/09/25 19:22:55 by jcortes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static char	**free_arr(char **arr, int len)
 
 	i = 0;
 	while (i < len)
-		free(arr[i]);
+		free(arr[i++]);
 	free(arr);
 	return (NULL);
 }
