@@ -6,7 +6,7 @@
 /*   By: jcortes <jcortes@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 17:44:16 by jcortes           #+#    #+#             */
-/*   Updated: 2026/09/25 16:47:49 by jcortes          ###   ########.fr       */
+/*   Updated: 2026/09/25 17:57:00 by jcortes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ char	*ft_strtrim(char const *str, char const *set)
 	new = ft_calloc(end - start + 1, sizeof(char));
 	if (new == NULL)
 		return (NULL);
-	strlcpy(new, str + start, end - start + 1);
+	ft_strlcpy(new, str + start, end - start + 1);
 	return (new);
 }
