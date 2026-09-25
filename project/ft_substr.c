@@ -6,7 +6,7 @@
 /*   By: jcortes <jcortes@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 17:45:27 by jcortes           #+#    #+#             */
-/*   Updated: 2026/09/24 17:46:22 by jcortes          ###   ########.fr       */
+/*   Updated: 2026/09/25 16:12:05 by jcortes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*new;
 
-	if (s == NULL || start > ft_strlen(s))
+	if (s == NULL)
 		return (NULL);
+	if (start > ft_strlen(s))
+		len = 0;
 	new = ft_calloc(len + 1, sizeof(char));
 	if (new == NULL)
 		return (NULL);

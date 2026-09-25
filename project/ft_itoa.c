@@ -6,7 +6,7 @@
 /*   By: jcortes <jcortes@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 11:11:27 by jcortes           #+#    #+#             */
-/*   Updated: 2026/09/25 11:36:37 by jcortes          ###   ########.fr       */
+/*   Updated: 2026/09/25 16:41:11 by jcortes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_itoa(int num)
 
 	n = num;
 	len = calculate_len(n);
-	str = ft_calloc(len, sizeof(char));
+	str = ft_calloc(len + 1, sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	set_char(str, len - 1, n);

@@ -6,7 +6,7 @@
 /*   By: jcortes <jcortes@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 17:41:49 by jcortes           #+#    #+#             */
-/*   Updated: 2026/09/24 17:41:51 by jcortes          ###   ########.fr       */
+/*   Updated: 2026/09/25 16:22:31 by jcortes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (malloc(0));
 	ptr = malloc(nmemb * size);
 	if (ptr == NULL)
-		return (ptr);
+		return (NULL);
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
 }
