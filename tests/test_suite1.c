@@ -5,10 +5,6 @@
 #include <limits.h>
 #include "libft.h"
 
-size_t	strlcpy(char *dst, const char *src, size_t size);
-size_t	strlcat(char *dst, const char *src, size_t size);
-char	*strnstr(const char *big, const char *little, size_t len);
-
 /* ========================================================================== */
 /*                           TESTS PARTE 1: MEMORIA                           */
 /* ========================================================================== */
