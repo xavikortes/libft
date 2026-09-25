@@ -1,36 +1,45 @@
 SRC_DIR = project
-
-SRCS = $(SRC_DIR)/ft_*.c
+LIB = $(SRC_DIR)/libft.a
 	
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -Wno-error=format-overflow
+CFLAGS = -Wall -Werror -Wextra
 
 RM = rm -f
 
-all: p1 p2 lst
+MEMCHECK = valgrind
+MEMFLAGS = --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all
 
-p1: p1.out
-	./p1.out
+all: test1 test2 test3
 
-p2: p2.out
-	./p2.out
+$(LIB): relib
 
-lst: lst.out
-	./lst.out	
+relib:
+	make -C ./$(SRC_DIR)
 
-p1.out: $(SRCS) test_part1.c
-	$(CC) $(CFLAGS) -o p1.out test_part1.c $(SRCS) -lbsd
+test1: relib tester_p1.out
+	$(MEMCHECK) $(MEMFLAGS) ./tester_p1.out
 
-p2.out: $(SRCS) test_part2.c
-	$(CC) $(CFLAGS) -o p2.out test_part2.c $(SRCS) -lbsd
+test2: relib tester_p2.out
+	$(MEMCHECK) $(MEMFLAGS) ./tester_p2.out
 
-lst.out: $(SRCS) test_lst.c
-	$(CC) $(CFLAGS) -o lst.out test_lst.c $(SRCS) -lbsd
+test3: relib tester_p3.out
+	$(MEMCHECK) $(MEMFLAGS) ./tester_p3.out
+
+tester_p1.out: $(LIB) tests/test_suite1.c
+	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite1.c $(SRC_DIR)/libft.a -o tester_p1.out -lbsd
+
+tester_p2.out: $(LIB) tests/test_suite2.c
+	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite2.c $(LIB) -o tester_p2.out -lbsd
+
+tester_p3.out: $(LIB) tests/test_suite3.c
+	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite3.c $(LIB) -o tester_p3.out -lbsd
 
 clean:
+	make clean -C ./$(SRC_DIR)
 
 fclean: clean
-	$(RM) p1.out p2.out lst.out
+	make fclean -C ./$(SRC_DIR)
+	$(RM) *.out
 
 re: fclean all
 
