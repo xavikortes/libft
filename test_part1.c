@@ -2,7 +2,7 @@
 
 int	main(void)
 {
-	printf("isalpha\n-------\n");
+	printf("\nisalpha\n-------\n");
 	printf("3 -> %i\n", isalpha('3') == ft_isalpha('3') * 1024);
 	printf("a -> %i\n", isalpha('a') == ft_isalpha('a') * 1024);
 	printf("z -> %i\n", isalpha('z') == ft_isalpha('z') * 1024);
