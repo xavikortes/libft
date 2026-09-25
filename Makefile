@@ -16,23 +16,23 @@ $(LIB): relib
 relib:
 	make -C ./$(SRC_DIR)
 
-test1: relib tester_p1.out
-	$(MEMCHECK) $(MEMFLAGS) ./tester_p1.out
+test1: relib p1.out
+	$(MEMCHECK) $(MEMFLAGS) ./p1.out
 
-test2: relib tester_p2.out
-	$(MEMCHECK) $(MEMFLAGS) ./tester_p2.out
+test2: relib p2.out
+	$(MEMCHECK) $(MEMFLAGS) ./p2.out
 
-test3: relib tester_p3.out
-	$(MEMCHECK) $(MEMFLAGS) ./tester_p3.out
+test3: relib p3.out
+	$(MEMCHECK) $(MEMFLAGS) ./p3.out
 
-tester_p1.out: $(LIB) tests/test_suite1.c
-	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite1.c $(SRC_DIR)/libft.a -o tester_p1.out -lbsd
+p1.out: $(LIB) tests/test_suite1.c
+	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite1.c $(LIB) -o p1.out -lbsd
 
-tester_p2.out: $(LIB) tests/test_suite2.c
-	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite2.c $(LIB) -o tester_p2.out -lbsd
+p2.out: $(LIB) tests/test_suite2.c
+	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite2.c $(LIB) -o p2.out -lbsd
 
-tester_p3.out: $(LIB) tests/test_suite3.c
-	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite3.c $(LIB) -o tester_p3.out -lbsd
+p3.out: $(LIB) tests/test_suite3.c
+	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite3.c $(LIB) -o p3.out -lbsd
 
 clean:
 	make clean -C ./$(SRC_DIR)
