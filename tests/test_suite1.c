@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <limits.h>
-#include "libft.h"
+#include "../project/libft.h"
 
 /* ========================================================================== */
 /*                           TESTS PARTE 1: MEMORIA                           */

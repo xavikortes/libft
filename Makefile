@@ -1,46 +1,57 @@
-SRC_DIR = project
-LIB = $(SRC_DIR)/libft.a
-	
+NAME1 = _test1.out
+NAME2 = _test2.out
+NAME3 = _test3.out
+
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-
 RM = rm -f
-
 MEMCHECK = valgrind
 MEMFLAGS = --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all
 
+LIB_DIR = ./project
+LIBS = \
+	$(LIB_DIR)/libft.a
+
+TEST_DIR = ./tests
+TEST1 = $(TEST_DIR)/test_suite1.c
+TEST2 = $(TEST_DIR)/test_suite2.c
+TEST3 = $(TEST_DIR)/test_suite3.c
+
 all: test1 test2 test3
 
-$(LIB): relib
+test1: $(NAME1)
+	./$(NAME1)
 
-relib:
-	make -C ./$(SRC_DIR)
+test2: $(NAME2)
+	./$(NAME2)
 
-test1: relib p1.out
-	$(MEMCHECK) $(MEMFLAGS) ./p1.out
+test3: $(NAME3)
+	./$(NAME3)
 
-test2: relib p2.out
-	$(MEMCHECK) $(MEMFLAGS) ./p2.out
+$(NAME1): $(LIBS)
+	$(CC) $(CFLAGS) $(TEST1) $(LIBS) -o $(NAME1) -lbsd
 
-test3: relib p3.out
-	$(MEMCHECK) $(MEMFLAGS) ./p3.out
+$(NAME2): $(LIBS)
+	$(CC) $(CFLAGS) $(TEST2) $(LIBS) -o $(NAME2) -lbsd
 
-p1.out: $(LIB) tests/test_suite1.c
-	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite1.c $(LIB) -o p1.out -lbsd
+$(NAME3): $(LIBS)
+	$(CC) $(CFLAGS) $(TEST3) $(LIBS) -o $(NAME3) -lbsd
 
-p2.out: $(LIB) tests/test_suite2.c
-	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite2.c $(LIB) -o p2.out -lbsd
+$(LIBS):
+	$(MAKE) -C $(LIB_DIR)
 
-p3.out: $(LIB) tests/test_suite3.c
-	$(CC) $(CFLAGS) -I $(SRC_DIR) tests/test_suite3.c $(LIB) -o p3.out -lbsd
+memcheck: $(NAME)
+	$(MEMCHECK) $(MEMFLAGS) ./$(NAME1)
+	$(MEMCHECK) $(MEMFLAGS) ./$(NAME2)
+	$(MEMCHECK) $(MEMFLAGS) ./$(NAME3)
 
 clean:
-	make clean -C ./$(SRC_DIR)
+	$(MAKE) clean -C $(LIB_DIR)
 
 fclean: clean
-	make fclean -C ./$(SRC_DIR)
-	$(RM) *.out
+	$(MAKE) fclean -C $(LIB_DIR)
+	$(RM) $(NAME1) $(NAME2) $(NAME3)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all test1 test2 test3 memcheck clean fclean re

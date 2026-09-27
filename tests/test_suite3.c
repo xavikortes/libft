@@ -1,8 +1,8 @@
-#include "libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include "../project/libft.h"
 
 #define COLOR_GREEN "\033[0;32m"
 #define COLOR_RED   "\033[0;31m"
